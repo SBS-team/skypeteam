@@ -21,3 +21,4 @@ gem "omniauth", ">= 1.1.1"
 gem "omniauth-facebook"
 gem "quiet_assets", ">= 1.0.1", :group => :development
 gem "therubyracer", ">= 0.10.2", :group => :assets, :platform => :ruby
+gem 'activeadmin'
