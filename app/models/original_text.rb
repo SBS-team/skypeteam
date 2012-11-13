@@ -4,8 +4,12 @@ class OriginalText < ActiveRecord::Base
   has_one :workday
   before_save :parse_text
 
+  def name
+    "#{id}-#{status}"
+  end
+
   def create_messages
-    workday_id = Workday.create!(skype_date: workday_date).id
+    workday_id = Workday.create!(skype_date: workday_date, original_text_id:id).id
     parsed_body.each do |hash|
       Message.create(hash.merge!(:workday_id => workday_id))
     end
