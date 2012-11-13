@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Memeber:
+  = @message.member_id
+%p
+  %b Body:
+  = @message.body
+%p
+  %b Body type:
+  = @message.body_type
+
+= link_to 'Edit', edit_message_path(@message)
+\|
+= link_to 'Back', messages_path
