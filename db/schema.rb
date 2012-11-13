@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113142247) do
+ActiveRecord::Schema.define(:version => 20121113143927) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(:version => 20121113142247) do
     t.integer  "workday_id"
   end
 
+  create_table "original_texts", :force => true do |t|
+    t.text     "body"
+    t.datetime "workday_date"
+    t.boolean  "status"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -79,7 +87,7 @@ ActiveRecord::Schema.define(:version => 20121113142247) do
 
   create_table "workdays", :force => true do |t|
     t.string   "skype_date"
-    t.string   "timestamp"
+    t.datetime "timestamp"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
