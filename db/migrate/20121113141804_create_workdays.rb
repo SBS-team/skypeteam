@@ -1,8 +1,9 @@
 class CreateWorkdays < ActiveRecord::Migration
   def change
     create_table :workdays do |t|
-      t.string :skype_date
-      t.datetime :timestamp
+      t.datetime :skype_date
+      t.integer :original_text_id
+      t.integer :messages_count
 
       t.timestamps
     end
