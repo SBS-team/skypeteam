@@ -15,11 +15,31 @@
           = render 'layouts/navigation'
     #main{:role => "main"}
       .container
-        .content
-          .row
-            .span12
-              = render 'layouts/messages'
-              = yield
-          %footer
+        %div{:style => "width:1200px"}
+          .content{:style => "float:left"}
+            .row
+              .span10
+                = render 'layouts/messages'
+                = yield
+            %footer
+          .span3.sidebar{:style => "float:left;"}
+            %ul.nav.nav-list
+              %h4
+                Хренология:
+              - sidebar.each do |year_k,year_v|
+                %li.nav-header.year
+                  = year_k
+                  %ul.nav.nav-list
+                    - year_v.each do |k,v|
+                      %li.nav-header.month{:class => "#{(@workday.skype_date.year == year_k) ? "show": "hide"}"}
+                        =k
+                        %ul.nav.nav-list
+                          - v.each do |day|
+                            %li.nav-header.date{:class => "#{(@workday.skype_date.strftime("%B") == k and @workday.skype_date.year == year_k) ? "show": "hide"}"}
+                              = link_to day, workday_path(day)
+
+
+          .clear
+
       / ! end of .container
     / ! end of #main

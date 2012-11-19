@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+$(document).ready(function() {
+    $(".sidebar li.nav-header").click(function(e){
+        if($(this).hasClass("year")){
+            $(".sidebar .month").hide()
+            $(this).find(".month").show();
+        }
+        if($(this).hasClass("month")){
+            $(".sidebar .date").hide()
+            $(this).find(".date").show();
+        }
+    });
+});

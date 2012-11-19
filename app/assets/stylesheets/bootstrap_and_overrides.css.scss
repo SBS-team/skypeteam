@@ -2,9 +2,23 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
-.content{
+.content, .sidebar{
   @include gradient-vertical($navbarBackgroundHighlight, $navbarBackground);
   border: 1px solid $navbarBorder;
   @include border-radius(4px);
   @include box-shadow(#{0 1px 4px rgba(0,0,0,.065)});
+}
+.sidebar {
+  width: 170px;
+}
+.hide{
+  display:none;
+}
+
+.show{
+  display:block;
+}
+.sidebar li.nav-header{
+  cursor: pointer;
+  font-size: 13px;
 }
