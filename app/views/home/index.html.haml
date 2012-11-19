@@ -1,2 +1,14 @@
-%h1 Home#index
-%p Find me in app/views/home/index.html.haml
+- @workdays.each do |workday|
+  %h1= l workday.skype_date , :format => :long
+
+  %table.table.home_index_table
+    - workday.messages.each do |message|
+      %tr
+        %td.name
+          %span
+            = message.member.name
+            \: &nbsp;
+        %td
+          %pre
+            = show_with_type(message.body, message.body_type)
+        %td

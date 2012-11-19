@@ -3,6 +3,10 @@ class OriginalText < ActiveRecord::Base
   serialize :parsed_body
   has_one :workday
   before_save :parse_text
+  TYPE_OF_CONTENT = {
+      "[img]" => :image,
+      "[youtube]" => :youtube
+  }
 
   def name
     "#{id}-#{status}"
@@ -22,7 +26,8 @@ class OriginalText < ActiveRecord::Base
 
   def parse_text
     tmp_body = []
-    body.split(/(\[.*\])/).each_with_index do |text, i|
+    split_body = body.split(/(\[.*\])/)
+    split_body.each_with_index do |text, i|
       unless i%2 == 1
         member_id = nil
         MemberAlias.all.each do |ma|
@@ -31,7 +36,7 @@ class OriginalText < ActiveRecord::Base
             break
           end
         end
-        tmp_body << {:member_id => member_id, :body => text}
+        tmp_body << {:member_id => member_id, :body => text, :body_type => (TYPE_OF_CONTENT[split_body[i-1]])}
       end
     end
     self.parsed_body = tmp_body

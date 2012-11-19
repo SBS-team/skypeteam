@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(:version => 20121113154207) do
 
   create_table "original_texts", :force => true do |t|
     t.text     "body"
-    t.datetime "workday_date"
+    t.date     "workday_date"
     t.boolean  "status"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(:version => 20121113154207) do
   end
 
   create_table "workdays", :force => true do |t|
-    t.datetime "skype_date"
+    t.date     "skype_date"
     t.integer  "original_text_id"
     t.integer  "messages_count"
     t.datetime "created_at",       :null => false

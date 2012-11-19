@@ -1,4 +1,5 @@
 ActiveAdmin.register OriginalText do
+  menu :parent => "Site edit"
   index do
     column :id
     column :status
@@ -7,6 +8,14 @@ ActiveAdmin.register OriginalText do
     column :updated_at
     column :created_at
     default_actions
+  end
+  form do |f|
+    f.inputs "Details" do
+      f.input :workday_date
+      f.input :body, :label => raw("<strong>Body :</strong></br><pre>Put instead time:\n#{OriginalText::TYPE_OF_CONTENT.keys.join("\n").to_s} </pre>")
+      f.input :parsed_body
+    end
+    f.buttons
   end
 
   show do
@@ -30,14 +39,15 @@ ActiveAdmin.register OriginalText do
           div do
             if ma = MemberAlias.find_by_member_id(mes[:member_id])
               pre(:style => "margin: 0;") do
-                ("#{ma.real_name}(#{ma.member.try(:name)}): #{mes[:body]}")
+                html = "#{ma.real_name}(#{ma.member.try(:name)}):"
+                raw(html << show_with_type(mes[:body],mes[:body_type].to_s))
               end
             elsif !mes[:body].blank?
               span(:style => "color:red; float:left") do
                 "NONAME:"
               end
               pre(:style => "width:90%; float:left;margin: 0;") do
-                mes[:body]
+                show_with_type(mes[:body],mes[:body_type].to_s)
               end
               div(:style => "clear: both;")
             end

@@ -1,6 +1,5 @@
 Skypeteam::Application.routes.draw do
-  root :to => "messages#index"
-  resources :messages
+  root :to => "home#index"
 
   ActiveAdmin.routes(self)
 

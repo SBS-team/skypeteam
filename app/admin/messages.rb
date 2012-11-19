@@ -1,4 +1,5 @@
 ActiveAdmin.register Message do
+  menu :parent => "Site information"
   index do
     column :id
     column :workday

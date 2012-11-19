@@ -1,4 +1,5 @@
 ActiveAdmin.register MemberAlias do
+  menu :parent => "Site edit"
   index do
     column :id
     column :member

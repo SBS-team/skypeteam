@@ -1,4 +1,5 @@
 ActiveAdmin.register Workday do
+  menu :parent => "Site information"
   index do
     column :id
     column :messages_count
