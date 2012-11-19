@@ -1,5 +1,3 @@
-= link_to "Читать с начала", workday_path(@start_date), class: "fright btn"
-
 %h1= l @workday.skype_date , :format => :long
 %table.table.home_index_table
   - @workday.messages.each do |message|
@@ -12,6 +10,9 @@
         %pre
           = show_with_type(message.body, message.body_type)
       %td
-- if prev = @workday.prev_date
-  = link_to "Предыдущий день", workday_path(prev), class: "fleft btn"
+- if prev_date = @workday.prev_date
+  = link_to "Предыдущий день", workday_path(prev_date), class: "fleft btn"
+
+- if next_date = @workday.next_date
+  = link_to "Следуюий день", workday_path(next_date), class: "fright btn"
 .clear
