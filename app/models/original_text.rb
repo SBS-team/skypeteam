@@ -9,7 +9,10 @@ class OriginalText < ActiveRecord::Base
   end
 
   def create_messages
-    workday_id = Workday.create!(skype_date: workday_date, original_text_id:id).id
+    self.workday.destroy if status
+
+    workday_id = Workday.create!(skype_date: workday_date, original_text_id: id).id
+    self.update_attribute(:status, true)
     parsed_body.each do |hash|
       Message.create(hash.merge!(:workday_id => workday_id))
     end
@@ -19,12 +22,12 @@ class OriginalText < ActiveRecord::Base
 
   def parse_text
     tmp_body = []
-    body.split(/(\[.*\])/).each_with_index do |text,i|
+    body.split(/(\[.*\])/).each_with_index do |text, i|
       unless i%2 == 1
         member_id = nil
         MemberAlias.all.each do |ma|
-          if text.sub!(ma.real_name,"")
-            member_id =  ma.member_id
+          if text.sub!(ma.real_name, "")
+            member_id = ma.member_id
             break
           end
         end

@@ -10,14 +10,14 @@ ActiveAdmin.register OriginalText do
   end
 
   show do
-      attributes_table do
-        row :id
-        row :status
-        row :messages_count
-        row :workday_date
-        row :updated_at
-        row :created_at
-      end
+    attributes_table do
+      row :id
+      row :status
+      row :messages_count
+      row :workday_date
+      row :updated_at
+      row :created_at
+    end
     panel "Origin", :style => "float:left; width: 50%" do
       div do
         simple_format original_text.body
@@ -29,13 +29,23 @@ ActiveAdmin.register OriginalText do
         original_text.parsed_body.each do |mes|
           div do
             if ma = MemberAlias.find_by_member_id(mes[:member_id])
-              raw("#{ma.real_name}(#{ma.member.try(:name)}): #{mes[:body]}")
+              pre(:style => "margin: 0;") do
+                ("#{ma.real_name}(#{ma.member.try(:name)}): #{mes[:body]}")
+              end
+            elsif !mes[:body].blank?
+              span(:style => "color:red; float:left") do
+                "NONAME:"
+              end
+              pre(:style => "width:90%; float:left;margin: 0;") do
+                mes[:body]
+              end
+              div(:style => "clear: both;")
             end
           end
         end
       end
     end
-   div :style => "clear:both"
+    div :style => "clear:both"
     active_admin_comments
   end
 

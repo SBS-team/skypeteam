@@ -12,7 +12,9 @@
   - @messages.each do |message|
     %tr
       %td= message.member_id
-      %td= message.body
+      %td
+        %pre
+          = message.body
       %td= message.body_type
       %td= link_to 'Show', message
       %td= link_to 'Edit', edit_message_path(message)
