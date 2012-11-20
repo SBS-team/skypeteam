@@ -1,16 +1,28 @@
-= link_to "Skypeteam", root_path, :class => 'brand'
+= link_to root_path, :class => 'brand' do
+  IT
+  %span{:style => "color:red;text-decoration:line-through;"}
+    f
+  gun
 %ul.nav
   - if user_signed_in?
     %li
-      Logged in as #{current_user.name}
+      %p.navbar-text
+        = current_user.name
     %li
-      = link_to 'Logout', user_logout_path, :method => :delete
+      = link_to 'Уйду я от вас', user_logout_path, :method => :delete
   - else
     %li
-      = link_to 'facebook', "/auth/facebook"
+      %p.navbar-text
+        Войди в меня:
     %li
-      = link_to 'Vk', "/auth/vkontakte"
+      = link_to "/auth/facebook", :style => "padding:10px 5px 10px;" do
+        = image_tag "http://www.dkauto.sk/image/fb_icon.png"
     %li
-      = link_to 'mailru', "/auth/mailru"
+      = link_to "/auth/vkontakte", :style => "padding:10px 5px 10px;" do
+        = image_tag "http://www.topnews.ru/images/ico_vk.png"
     %li
-      = link_to 'google', "/auth/google"
+      = link_to "/auth/mailru", :style => "padding:10px 5px 10px;" do
+        = image_tag "http://virtamir.ru/img/logo/mailru?c="
+    %li
+      = link_to "/auth/google", :style => "padding:10px 5px 10px;" do
+        = image_tag "http://www.books.ru/static/images/buttons/social/google.png"
