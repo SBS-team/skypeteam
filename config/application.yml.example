@@ -1,4 +1,16 @@
 development:
+  oauth_facebook:
+    key: ""
+    secret: ""
+  oauth_vk:
+    key: ""
+    secret: ""
+  oauth_mail_ru:
+    key: ""
+    secret: ""
+  oauth_google:
+    key: ""
+    secret: ""
   mailer:
     default_url_options:
       host: "localhost:3000"
@@ -13,6 +25,19 @@ development:
       enable_starttls_auto: true
 
 production:
+development:
+  oauth_facebook:
+    key: ""
+    secret: ""
+  oauth_vk:
+    key: ""
+    secret: ""
+  oauth_mail_ru:
+    key: ""
+    secret: ""
+  oauth_google:
+    key: ""
+    secret: ""
   mailer:
     default_url_options:
       host: "localhost:3000"
