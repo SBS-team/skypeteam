@@ -5,5 +5,7 @@ Skypeteam::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :sessions, :except => [:index, :show, :edit]
+  match "/auth/:provider/callback" => "sessions#create", :as => :auth_provider
+  delete "/logout" => "sessions#destroy", :as => :user_logout
+
 end

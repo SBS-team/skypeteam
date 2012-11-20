@@ -4,7 +4,8 @@
     %li
       Logged in as #{current_user.name}
     %li
-      = link_to 'Logout', session_path
+      = link_to 'Logout', user_logout_path, :method => :delete
   - else
     %li
-      = link_to 'Login', new_session_path
+      = link_to 'facebook', "/auth/facebook"
+      = link_to 'Vk', "/auth/vkontakte"

@@ -5,7 +5,8 @@ class OriginalText < ActiveRecord::Base
   before_save :parse_text
   TYPE_OF_CONTENT = {
       "[img]" => :image,
-      "[youtube]" => :youtube
+      "[youtube]" => :youtube,
+      "[url]" => :link_to,
   }
 
   def name
