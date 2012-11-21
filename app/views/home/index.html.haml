@@ -11,10 +11,9 @@
       %td
         %pre
           = show_with_type(message.body, message.body_type)
-      %td
-        = link_to "#", class: "like-message", data: {title: 10, placement: :right, message: message.id} do
+      %td{width: 15}
+        = link_to "#", class: "like-message", data: {title: 10, placement: :right, message: message.id}, :onclick => "console.log($(this).data('message'))" do
           %i.icon-heart
-      %td
 - if prev = @workday.prev_date
   = link_to "Предыдущий день", workday_path(prev), class: "fleft btn"
 .clear
