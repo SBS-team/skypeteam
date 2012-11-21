@@ -6,3 +6,4 @@
 - if next_date = @workday.next_date
   = link_to "Следуюий день", workday_path(next_date), class: "fright btn"
 .clear
+= render :partial => "comments"

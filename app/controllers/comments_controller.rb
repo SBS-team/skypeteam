@@ -1,18 +1,21 @@
+#encoding: utf-8
 class CommentsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :find_workday
-  def show
-    @comments = @workday.comments.include(:users)
-  end
 
   def create
-    current_user.comments.create(:workday => @workday, :message => params[:comment][:message])
+    comment = current_user.comments.build(:workday_id => @workday.id, :body => params[:comment][:body])
+    if comment.save
+      flash[:notice] = "Комментарий добавлен"
+    else
+      flash[:alert] = "Чет не получилось добавить комментарий"
+    end
     redirect_to :back
   end
 
   private
 
-  def find_comment
+  def find_workday
     @workday = Workday.find(params[:workday_id])
   end
 
