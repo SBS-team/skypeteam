@@ -5,8 +5,12 @@ class SessionsController < ApplicationController
     auth = request.env["omniauth.auth"]
     user = User.where(:provider => auth['provider'],
                       :uid => auth['uid'].to_s).first || User.create_with_omniauth(auth)
-    session[:user_id] = user.id
-    redirect_to root_path, :notice => "Велкам!!!"
+    unless user.banned?
+      session[:user_id] = user.id
+      redirect_to root_path, :notice => "Велкам!!!"
+    else
+      redirect_to root_path, :alert => "Да Да, ты забанен Оо! причина : #{user.ban_reason}"
+    end
   end
 
   def destroy

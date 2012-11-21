@@ -1,6 +1,7 @@
 class Workday < ActiveRecord::Base
   attr_accessible :skype_date, :original_text_id
   has_many :messages, :dependent => :destroy
+  has_many :comments
   belongs_to :original_text
 
   validates :skype_date, :original_text_id, :presence => true, :uniqueness => true

@@ -1,0 +1,15 @@
+%h1= l @workday.skype_date , :format => :long
+%table.table.home_index_table
+  - @workday.messages.each do |message|
+    %tr
+      %td.name
+        %span
+          = message.member.name
+          \: &nbsp;
+      %td
+        %pre
+          = show_with_type(message.body, message.body_type)
+      %td{width: 15}
+        - if current_user
+          = link_to "#", class: "like-message", data: {title: message.likes_count.to_i, placement: :right, message: message.id}, :onclick => "set_like($(this));return false;" do
+            %i.icon-star

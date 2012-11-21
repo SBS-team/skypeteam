@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user
@@ -16,6 +17,8 @@ class ApplicationController < ActionController::Base
   def current_user
       begin
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
+        reset_session if @current_user.banned?
+        @current_user
       rescue Exception => e
         nil
       end
@@ -34,7 +37,7 @@ class ApplicationController < ActionController::Base
 
     def authenticate_user!
       if !current_user
-        redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+        redirect_to root_url, :alert => 'Войди в меня сначала!'
       end
     end
 

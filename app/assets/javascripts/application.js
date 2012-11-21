@@ -27,3 +27,11 @@ $(document).ready(function() {
     });
     $(".like-message").tooltip();
 });
+function set_like(obj){
+    $.post("/user/like",{message_id: obj.data('message')}, function(res){
+        $(obj).tooltip('hide')
+            .attr('data-original-title', res['count'])
+            .tooltip('fixTitle')
+            .tooltip('show');
+    })
+}

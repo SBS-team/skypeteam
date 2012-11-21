@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121113154207) do
+ActiveRecord::Schema.define(:version => 20121121125157) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(:version => 20121113154207) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "workday_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "likes", :force => true do |t|
+    t.integer "message_id"
+    t.integer "user_id"
+  end
+
   create_table "member_aliases", :force => true do |t|
     t.integer  "member_id"
     t.string   "real_name"
@@ -63,9 +76,10 @@ ActiveRecord::Schema.define(:version => 20121113154207) do
     t.integer  "member_id"
     t.text     "body"
     t.string   "body_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "workday_id"
+    t.integer  "likes_count"
   end
 
   create_table "original_texts", :force => true do |t|
@@ -85,6 +99,8 @@ ActiveRecord::Schema.define(:version => 20121113154207) do
     t.string   "uid"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.text     "last_url"
+    t.text     "ban_reason"
   end
 
   create_table "workdays", :force => true do |t|
@@ -93,6 +109,7 @@ ActiveRecord::Schema.define(:version => 20121113154207) do
     t.integer  "messages_count"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "comments_count"
   end
 
 end

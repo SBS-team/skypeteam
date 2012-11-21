@@ -1,19 +1,7 @@
 = link_to "Читать с начала", workday_path(@start_date), class: "fright btn"
 
-%h1= l @workday.skype_date , :format => :long
-%table.table.home_index_table
-  - @workday.messages.each do |message|
-    %tr
-      %td.name
-        %span
-          = message.member.name
-          \: &nbsp;
-      %td
-        %pre
-          = show_with_type(message.body, message.body_type)
-      %td{width: 15}
-        = link_to "#", class: "like-message", data: {title: 10, placement: :right, message: message.id}, :onclick => "console.log($(this).data('message'))" do
-          %i.icon-heart
+= render :partial => "page"
+
 - if prev = @workday.prev_date
   = link_to "Предыдущий день", workday_path(prev), class: "fleft btn"
 .clear
