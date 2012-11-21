@@ -2,9 +2,11 @@
 %html
   %head
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
-      %title= content_for?(:title) ? yield(:title) : "Skypeteam"
+      %title= content_for?(:title) ? yield(:title) : "ITgun"
       %meta{:content => content_for?(:description) ? yield(:description) : "Skypeteam", :name => "description"}
         = stylesheet_link_tag "application", :media => "all"
+        /[if lt IE 9]
+          = javascript_include_tag "plugins/html5"
         = javascript_include_tag "application"
         = csrf_meta_tags
         = yield(:head)

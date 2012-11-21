@@ -25,4 +25,5 @@ $(document).ready(function() {
             $(this).find(".date").show();
         }
     });
+    $(".like-message").tooltip();
 });

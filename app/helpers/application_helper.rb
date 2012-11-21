@@ -1,13 +1,12 @@
 module ApplicationHelper
   def show_with_type(text,type)
-    text = text.gsub(" ","")
     case type
       when "image"
-        image_tag text
+        image_tag text.gsub(" ","")
       when "youtube"
-        raw youtube_embed(text)
+        raw youtube_embed(text.gsub(" ",""))
       when "link_to"
-        link_to text, text, :rel => :nofollow, :target => :blank
+        link_to text, text.gsub(" ",""), :rel => :nofollow, :target => :blank
       else
         text
     end
