@@ -23,4 +23,9 @@ module ApplicationHelper
 
     %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{youtube_id}" frameborder="0" allowfullscreen></iframe>}
   end
+
+  def gravatar_url(user, size = 64)
+    gravatar_id = Digest::MD5::hexdigest(user.email || user.name).downcase
+    "http://gravatar.com/avatar/#{gravatar_id}.png?d=wavatar&s=#{size}"
+  end
 end

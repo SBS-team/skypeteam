@@ -7,8 +7,11 @@
       %textarea#comments-body{:name => "comment[body]", :placeholder => "Тут влазит только 300 символов", :style => "width:875px"}
       %button.btn{:type => "submit", style: "height:50px"} На на!
   - @workday.comments.each do |comment|
-    %p
-      = comment.user.name
-      \:
-      %pre
-        = comment.body
+    .media
+      %a.pull-left{:href => "http://gravatar.com", :style => "padding-right: 10px"}
+        %img.media-object{:src => gravatar_url(comment.user)}
+      .media-body
+        %h4.media-heading= comment.user.name
+        .media
+          = comment.body
+    .clear
