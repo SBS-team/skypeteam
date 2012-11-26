@@ -25,7 +25,6 @@ development:
       enable_starttls_auto: true
 
 production:
-development:
   oauth_facebook:
     key: ""
     secret: ""
