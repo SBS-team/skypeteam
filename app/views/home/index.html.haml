@@ -1,4 +1,5 @@
-= link_to "Читать с начала", workday_path(@start_date), class: "fright btn"
+- if @start_date
+  = link_to "Читать с начала", workday_path(@start_date), class: "fright btn"
 
 = render :partial => "page"
 
