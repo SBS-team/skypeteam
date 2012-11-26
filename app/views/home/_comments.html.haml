@@ -1,17 +1,18 @@
-- content_for :comments do
-  %h3 Комментарии
-  - if current_user
-    %form.form-inline{:action => comments_path(@workday), :method => :post}
-      %input{:name => "utf8", :type => "hidden", :value => "✓"}
-      %input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token}/
-      %textarea#comments-body{:name => "comment[body]", :placeholder => "Тут влазит только 300 символов", :style => "width:875px"}
-      %button.btn{:type => "submit", style: "height:50px"} На на!
-  - @workday.comments.each do |comment|
-    .media
-      %a.pull-left{:href => "http://gravatar.com", :style => "padding-right: 10px"}
-        %img.media-object{:src => gravatar_url(comment.user)}
-      .media-body
-        %h4.media-heading= comment.user.name
-        .media
-          = comment.body
-    .clear
+- if @workday
+  - content_for :comments do
+    %h3 Комментарии
+    - if current_user
+      %form.form-inline{:action => comments_path(@workday), :method => :post}
+        %input{:name => "utf8", :type => "hidden", :value => "✓"}
+        %input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token}/
+        %textarea#comments-body{:name => "comment[body]", :placeholder => "Тут влазит только 300 символов", :style => "width:875px"}
+        %button.btn{:type => "submit", style: "height:50px"} На на!
+    - @workday.comments.each do |comment|
+      .media
+        %a.pull-left{:href => "http://gravatar.com", :style => "padding-right: 10px"}
+          %img.media-object{:src => gravatar_url(comment.user)}
+        .media-body
+          %h4.media-heading= comment.user.name
+          .media
+            = comment.body
+      .clear
