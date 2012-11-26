@@ -3,7 +3,7 @@
 
 = render :partial => "page"
 
-- if prev = @workday.prev_date
+- if @workday and prev = @workday.prev_date
   = link_to "Предыдущий день", workday_path(prev), class: "fleft btn"
 .clear
 = render :partial => "comments"
