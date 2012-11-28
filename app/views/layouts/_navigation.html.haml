@@ -3,7 +3,7 @@
   %span{:style => "color:red;text-decoration:line-through;"}
     f
   gun
-%ul.nav
+%ul.nav{:style => "width:75%"}
   - if user_signed_in?
     %li
       %p.navbar-text
@@ -26,3 +26,7 @@
     %li
       = link_to "/auth/google", :style => "padding:10px 5px 10px;" do
         = image_tag "google.png"
+    %li{:style => "float:right;color:red"}
+      %p.navbar-text
+        %strong
+          Контент 18+

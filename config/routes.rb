@@ -1,6 +1,7 @@
 Skypeteam::Application.routes.draw do
   root :to => "home#index"
   match "/in-day/:skype_date" => "home#show", :as => :workday
+  match "/about" => "home#about", :as => :about
   post "/workday/:workday_id/comments/create" => "comments#create" , :as => :comments
   ActiveAdmin.routes(self)
 

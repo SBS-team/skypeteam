@@ -1,0 +1,10 @@
+.popup-dialog.modal.hide.fade
+  .modal-header
+    %h3{:style => 'color:red'} ВНИМАНИЕ !!!
+  .modal-body
+    = image_tag "18.png", :size => "100x100", :align => "right"
+    %p На данном сайте присутствует эротический контент и не нормативная лексика.
+    %p Данный конетент доступен только для взрослой аудитории
+  .modal-footer
+    = link_to "Уйти от сюда", "http://google.com", :class => "btn btn-success"
+    = link_to_function"Я подтверждаю что мне есть 18 лет и более", "age_confirmation()", :class => "btn btn-danger"

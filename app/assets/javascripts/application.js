@@ -26,6 +26,17 @@ $(document).ready(function() {
         }
     });
     $(".like-message").tooltip();
+    if ($.cookie("age_confirmation") != "true"){
+        $('.popup-dialog.modal').modal();
+        $('.popup-dialog.modal').on('hide', function () {return false;})
+    }
+
+    $("iframe").each(function(){
+        var ifr_source = $(this).attr('src');
+        var wmode = "?wmode=transparent";
+        $(this).attr('src',ifr_source+wmode);
+    });
+
 });
 function set_like(obj){
     $.post("/user/like",{message_id: obj.data('message')}, function(res){
@@ -34,4 +45,9 @@ function set_like(obj){
             .tooltip('fixTitle')
             .tooltip('show');
     })
+}
+
+function age_confirmation(){
+  $.cookie("age_confirmation", true, {expires: 5000})
+  window.location.href = "/about"
 }

@@ -8,4 +8,8 @@ class HomeController < ApplicationController
   def show
     @workday = Workday.includes(:comments => :user, :messages => :member).find_by_skype_date(params[:skype_date])
   end
+
+  def about
+    @workday = Workday.includes(:comments => :user, :messages => :member).last
+  end
 end

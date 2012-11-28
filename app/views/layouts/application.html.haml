@@ -15,7 +15,7 @@
       %nav.navbar-inner
         .container
           = render 'layouts/navigation'
-    #main{:role => "main"}
+    #main{:role => "main", :style => "margin-bottom: 50px"}
       .container
         %div{:style => "width:1200px"}
           .content{:style => "float:left"}
@@ -23,7 +23,7 @@
               .span10
                 = render 'layouts/messages'
                 = yield
-            %footer
+
           .span3.sidebar{:style => "float:left;"}
             %ul.nav.nav-list
               %h4
@@ -47,6 +47,23 @@
               .row
                 .span10
                   = yield(:comments)
+      #popup-dialog
+        = render 'layouts/popup'
+    %footer.navbar.navbar-fixed-bottom
+      %nav.navbar-inner
+        .container
+          %ul.nav
+            %li
+              = link_to about_path do
+                %i.icon-info-sign
+                %span
+                  Где я?
+            %li
+              = link_to "#" do
+                %i.icon-pencil
+                %span
+                  Написать нам
+
 
 
       / ! end of .container
