@@ -1,9 +1,11 @@
 = render :partial => "page"
 
-- if prev_date = @workday.prev_date
-  = link_to "Предыдущий день", workday_path(prev_date), class: "fleft btn"
-
-- if next_date = @workday.next_date
-  = link_to "Следуюий день", workday_path(next_date), class: "fright btn"
+%ul.pager
+  - if prev_date = @workday.prev_date
+    %li.previous
+      %a{:href => workday_path(prev_date)} ← Предыдущий день
+  - if next_date = @workday.next_date
+    %li.next
+      %a{:href => workday_path(next_date)} Следуюий день →
 .clear
 = render :partial => "comments"

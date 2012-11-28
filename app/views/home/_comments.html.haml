@@ -7,7 +7,7 @@
         %input{:name => "authenticity_token", :type => "hidden", :value => form_authenticity_token}/
         %textarea#comments-body{:name => "comment[body]", :placeholder => "Тут влазит только 300 символов", :style => "width:875px"}
         %button.btn{:type => "submit", style: "height:50px"} На на!
-    - @workday.comments.each do |comment|
+    - @comments.each do |comment|
       .media
         %a.pull-left{:href => "http://gravatar.com", :style => "padding-right: 10px"}
           %img.media-object{:src => gravatar_url(comment.user)}
@@ -16,3 +16,4 @@
           .media
             = comment.body
       .clear
+    = paginate @comments

@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     else
       flash[:alert] = "Чет не получилось добавить комментарий"
     end
-    redirect_to :back
+    redirect_to workday_path(@workday.skype_date)
   end
 
   private
