@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :provider, :uid, :name, :email,:last_url, :ban_reason
   has_many :comments
   has_many :likes
+  has_many :feedbacks
 
   before_save :clear_ban_reason
 

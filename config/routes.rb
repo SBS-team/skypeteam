@@ -3,6 +3,8 @@ Skypeteam::Application.routes.draw do
   match "/in-day/:skype_date" => "home#show", :as => :workday
   match "/about" => "home#about", :as => :about
   post "/workday/:workday_id/comments/create" => "comments#create" , :as => :comments
+  post "/feedback/create" => "feedbacks#create" , :as => :feedbacks
+
   ActiveAdmin.routes(self)
 
   devise_for :admin_users, ActiveAdmin::Devise.config
