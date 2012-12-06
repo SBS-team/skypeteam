@@ -20,7 +20,7 @@ class HomeController < ApplicationController
                else
                  Workday.includes(:comments => :user, :messages => :member).last
                end
-    @workday ||= Workday.new
+    @workday ||= Workday.new(:skype_date => Time.now)
     @comments = @workday.comments.page(params[:page]).per(50)
   end
 end
