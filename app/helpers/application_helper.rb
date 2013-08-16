@@ -1,13 +1,18 @@
 module ApplicationHelper
+  require 'nokogiri'
+  require 'open-uri'
   def show_with_type(text,type)
     case type
       when "image"
-        image_tag text.gsub(" ","")
+        image_tag("#{text.gsub(" ","")}",width: 400)
       when "youtube"
         raw youtube_embed(text.gsub(" ",""))
       when "link_to"
         link_to text, text.gsub(" ",""), :rel => :nofollow, :target => :blank
+      when "vk"
+        raw text
       else
+
         text
     end
   end
@@ -20,12 +25,33 @@ module ApplicationHelper
       youtube_url[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
       youtube_id = $5
     end
-
     %Q{<iframe title="YouTube video player" width="640" height="390" src="http://www.youtube.com/embed/#{youtube_id}" frameborder="0" allowfullscreen></iframe>}
   end
+
 
   def gravatar_url(user, size = 64)
     gravatar_id = Digest::MD5::hexdigest(user.email || user.name).downcase
     "http://gravatar.com/avatar/#{gravatar_id}.png?d=wavatar&s=#{size}"
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
