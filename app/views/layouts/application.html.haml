@@ -23,7 +23,6 @@
               .span10
                 = render 'layouts/messages'
                 = yield
-
           .span3.sidebar{:style => "float:left;"}
             %ul.nav.nav-list
               %h4
@@ -34,7 +33,7 @@
                   %ul.nav.nav-list
                     - year_v.each do |k,v|
                       %li.nav-header.month{:class => "#{(@workday.skype_date.year == year_k) ? "show": "hide"}"}
-                        =k
+                        = t("date.month.#{k}")
                         %ul.nav.nav-list
                           - v.each do |day|
                             %li.nav-header.date{:class => "#{(@workday.skype_date.strftime("%B") == k and @workday.skype_date.year == year_k) ? "show": "hide"}"}
@@ -49,6 +48,7 @@
                   = yield(:comments)
       #popup-dialog
         = render 'layouts/popup'
+        = render 'layouts/popup_contact'
     %footer.navbar.navbar-fixed-bottom
       %nav.navbar-inner
         .container
@@ -59,7 +59,7 @@
                 %span
                   Где я?
             %li
-              = link_to "#" do
+              = link_to 'javascript:void(0)', :class => 'write_to_us' do
                 %i.icon-pencil
                 %span
                   Написать нам

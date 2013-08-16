@@ -12,6 +12,17 @@ class HomeController < ApplicationController
   def about
   end
 
+  def write_to_us
+    email = params[:email]
+    text = params[:text]
+    if text.length < 10
+      head :status => 403
+    else
+      AdminMailer.contact_us(email,text).deliver
+      head :ok
+    end
+
+  end
   private
 
   def find_workday

@@ -1,5 +1,5 @@
 - if @workday
-  %h1= l @workday.skype_date , :format => :long
+  %h1= localize(@workday.skype_date , :format => :long)
   %table.table.home_index_table
     - @workday.messages.each do |message|
       %tr
