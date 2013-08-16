@@ -10,3 +10,5 @@ $(document).ready ->
       $('.popup-dialog_contact').modal('hide')
     $(document).ajaxError ->
       $('.contact_us_text').val('Минимум 10 символов!')
+  $(".smiles").emoticonize
+    animate: true

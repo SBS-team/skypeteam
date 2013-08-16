@@ -14,7 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require_tree .
+//= require jquery.cssemoticons.min
+
+
 $(document).ready(function() {
+
     $(".sidebar li.nav-header").click(function(e){
         if($(this).hasClass("year")){
             $(".sidebar .month").hide()

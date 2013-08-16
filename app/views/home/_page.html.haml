@@ -9,7 +9,8 @@
             \: &nbsp;
         %td
           %pre
-            = show_with_type(message.body, message.body_type)
+            .smiles
+              = show_with_type(message.body, message.body_type)
         %td{width: 15}
           - if current_user
             = link_to "#", class: "like-message", data: {title: message.likes_count.to_i, placement: :right, message: message.id}, :onclick => "set_like($(this));return false;" do
