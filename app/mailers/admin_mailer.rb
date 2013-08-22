@@ -1,6 +1,5 @@
 class AdminMailer < ActionMailer::Base
-  default to: "noreply@is-valid.org"
-
+  default to: Proc.new { AdminUser.pluck(:email) }
 
   def contact_us(email,text)
     mail(from: email , subject: "#{text}")
