@@ -6,7 +6,7 @@ $(document).ready ->
   $('.write_to_us').click (event)->
     $('.popup-dialog_contact').modal('show')
     $(document).ajaxSuccess (response)->
-      console.log response
+      $(".contact_us_text, .contact_us_email").val('')
       $('.popup-dialog_contact').modal('hide')
     $(document).ajaxError ->
       $('.contact_us_text').val('Неверные данные')
