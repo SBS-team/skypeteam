@@ -15,7 +15,7 @@ class HomeController < ApplicationController
   def write_to_us
     email = params[:email]
     text = params[:text]
-    if text.length < 10
+    if text.length < 10 || AdminUser.where(:email => email).any?
       head :status => 403
     else
       AdminMailer.contact_us(email,text).deliver

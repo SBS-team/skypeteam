@@ -4,7 +4,7 @@
   = form_tag '/home/write_to_us', :remote => true do |f|
     .modal-body
       %p
-        = text_field_tag :class => :contact_us_email, :type => :email, :name => 'email', :placeholder => 'Можете не вводить Ваш email'
+        = text_field_tag 'email',nil, :class => :contact_us_email, :type => :email, :placeholder => 'Можете не вводить Ваш email'
       %p
         = text_area_tag 'text',nil, class: 'contact_us_text required', :placeholder => 'Ваше сообщение', :style => 'width: 515px;height: 120px;', :required => true, :maxlength => 500
     .modal-footer

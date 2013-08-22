@@ -9,6 +9,9 @@ $(document).ready ->
       console.log response
       $('.popup-dialog_contact').modal('hide')
     $(document).ajaxError ->
-      $('.contact_us_text').val('Минимум 10 символов!')
+      $('.contact_us_text').val('Неверные данные')
+      setTimeout ->
+        $(".contact_us_text").val('')
+      , 1000
   $(".smiles, .media").emoticonize
     animate: true
