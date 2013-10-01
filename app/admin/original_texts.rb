@@ -60,7 +60,7 @@ ActiveAdmin.register OriginalText do
   end
 
   action_item :only => [:show, :edit] do
-    link_to('Show on site', public_admin_original_text_path(original_text), :method => :post, :confirm => "Are you sure?")
+    link_to('Show on site', public_admin_original_text_path(original_text), :method => :post, data: { confirm: 'Are you sure?' })
   end
 
   member_action :public, :method => :post do
