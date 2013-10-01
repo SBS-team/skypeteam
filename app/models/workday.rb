@@ -5,7 +5,7 @@ class Workday < ActiveRecord::Base
   belongs_to :original_text
 
   validates :skype_date, :original_text_id, :presence => true, :uniqueness => true
-  default_scope order("skype_date asc")
+  default_scope order("skype_date asc")  #fix me
 
   def name
     skype_date.to_s(:db)
