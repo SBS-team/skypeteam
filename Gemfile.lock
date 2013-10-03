@@ -55,6 +55,12 @@ GEM
       sass (>= 3.2.0)
       thor
     builder (3.1.4)
+    capistrano (2.15.5)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -92,6 +98,7 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (2.0.5)
+    highline (1.6.19)
     hike (1.2.3)
     hpricot (0.8.6)
     httpauth (0.2.0)
@@ -121,6 +128,13 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.0)
     multipart-post (1.2.0)
+    net-scp (1.1.2)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.7.0)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     oauth (0.4.7)
@@ -199,6 +213,8 @@ GEM
       rspec-mocks (~> 2.14.0)
     ruby_parser (3.2.2)
       sexp_processor (~> 4.1)
+    rvm-capistrano (1.5.0)
+      capistrano (>= 2.15.4)
     sass (3.2.11)
     sass-rails (4.0.0)
       railties (>= 4.0.0.beta, < 5.0)
@@ -245,6 +261,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   bootstrap-sass (>= 2.1.1.0)
+  capistrano
   coffee-rails
   database_cleaner (>= 0.9.1)
   email_spec (>= 1.4.0)
@@ -264,6 +281,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rspec-rails (>= 2.11.4)
   ruby_parser (>= 3.0.1)
+  rvm-capistrano
   sass-rails
   therubyracer (>= 0.10.2)
   thin (>= 1.5.0)

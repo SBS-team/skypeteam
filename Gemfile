@@ -28,4 +28,7 @@ gem 'therubyracer', '>= 0.10.2', :group => :assets, :platform => :ruby
 gem 'activeadmin', github: 'gregbell/active_admin'#, branch: 'rails4'
 gem 'nokogiri'
 
+gem 'capistrano'
+gem 'rvm-capistrano'
+
 gem 'protected_attributes'
