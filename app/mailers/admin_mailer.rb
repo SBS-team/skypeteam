@@ -6,7 +6,7 @@ class AdminMailer < ActionMailer::Base
   end
 
   def receive(email)
-    page = Page.find_by_address(email.to.first)
+    page = Page.find_by(:address => email.to.first)
     page.emails.create(
         subject: email.subject
     )

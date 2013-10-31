@@ -17,7 +17,7 @@ class HomeController < ApplicationController
       head :status => 403
     else
       AdminMailer.contact_us(params[:email],params[:text]).deliver
-      head :ok
+      head :ok, :layout => false
     end
 
   end
