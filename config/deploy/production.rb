@@ -10,7 +10,6 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
  
 set :shared_path, "#{deploy_to}/shared"
 
-#set :branch, 'master'
-set :branch, 'rails_update'
+set :branch, 'master'
 
 set :user, 'admin'
