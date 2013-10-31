@@ -4,5 +4,5 @@ class Message < ActiveRecord::Base
   belongs_to :member
   has_many :likes
   validates :member_id, :body, :presence => true
-  default_scope order("id asc")  #fix me
+  default_scope -> { order("id asc") }
 end
